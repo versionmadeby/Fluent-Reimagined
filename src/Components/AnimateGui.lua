@@ -25,6 +25,11 @@ function Animation.Apply(theme, root)
 	for _, obj in ipairs(root:GetDescendants()) do
 		if obj:IsA("UIGradient") then
 			obj.Rotation = 0
+			obj.Color = ColorSequence.new{
+				ColorSequenceKeypoint.new(0, dark),
+				ColorSequenceKeypoint.new(0.5, shine),
+			    ColorSequenceKeypoint.new(1, dark)
+			)
 			local active = true
 
 			local rotationThread
