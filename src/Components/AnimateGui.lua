@@ -15,8 +15,9 @@ function Animation.Apply(theme, root)
 	if not theme or not root or not theme.ShineEnabled then
 		return
 	end
-  
+
 	local speed = theme.ShineSpeed or 0.6
+	local rotateSpeed = theme.RotationSpeed or 40 
 	local dark  = theme.ShineDark or Color3.fromRGB(8,8,8)
 	local shine = theme.ShineColor or theme.Accent or Color3.fromRGB(120,200,255)
 
@@ -27,6 +28,7 @@ function Animation.Apply(theme, root)
 			conn = RunService.RenderStepped:Connect(function(dt)
 				t += dt * speed
 				obj.Offset = Vector2.new(math.sin(t) * 0.5, 0)
+				obj.Rotation = (t * rotateSpeed) % 360
 				obj.Color = ColorSequence.new{
 					ColorSequenceKeypoint.new(0, dark),
 					ColorSequenceKeypoint.new(0.5, shine),
