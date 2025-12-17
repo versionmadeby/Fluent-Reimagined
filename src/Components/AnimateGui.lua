@@ -27,7 +27,11 @@ function Animation.Apply(theme, root)
 			local conn
 			conn = RunService.RenderStepped:Connect(function(dt)
 				t += dt * speed
-                obj.Offset = Vector2.new((tick() * 0.15) % 1, 0)
+                local r = tick() * 0.4
+                obj.Offset = Vector2.new(
+                  0.5 + math.sin(r) * 0.25,
+                  0.5 + math.cos(r) * 0.25
+                )
 				obj.Rotation = (t * rotateSpeed) % 360
 				obj.Color = ColorSequence.new{
 					ColorSequenceKeypoint.new(0, dark),
