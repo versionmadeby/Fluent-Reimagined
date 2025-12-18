@@ -26,7 +26,10 @@ function Animation.Apply(theme, root)
 			local t = 0
 			local conn
 			conn = RunService.RenderStepped:Connect(function(dt)
+				local t = obj:GetAttribute("old_t") or 0
 				t += dt * speed
+                obj:SetAttribute("old_t", t)
+				
                 -- local r = tick() * (theme.RotationSpeed * 0.1 or 0.4)
                 -- obj.Offset = Vector2.new(0.5 + math.sin(r) * 0.5, 0.5 + math.cos(r) * 0.5)
 					
@@ -45,7 +48,10 @@ function Animation.Apply(theme, root)
 			local t = 0
 			local conn
 			conn = RunService.RenderStepped:Connect(function(dt)
+				local t = obj:GetAttribute("old_t") or 0
 				t += dt * speed
+				obj:SetAttribute("old_t", t)
+			
 				obj.Color = from:Lerp(shine, (math.sin(t) + 1) / 2)
 			end)
 			table.insert(connections, conn)
