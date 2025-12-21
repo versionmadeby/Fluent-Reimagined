@@ -82,11 +82,13 @@ function FloatingButtonManager:Load(name)
                 if corner then corner.CornerRadius = UDim.new(1, 0) end
                 if button then
                     local s = math.min(frame.AbsoluteSize.X, frame.AbsoluteSize.Y)
+                    button.TextScaled = true
                     button.TextSize = math.floor(s * 0.45)
                 end
             else
                 if corner then corner.CornerRadius = UDim.new(0, 15) end
                 if button then
+                    button.TextScaled = false
                     button.TextSize = 24 
                 end
             end
