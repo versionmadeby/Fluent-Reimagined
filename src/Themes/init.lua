@@ -8,6 +8,7 @@ local Themes = {
 		"Emerald",
 		"Rose",
 		"Azure",
+		"Crimson",
 	},
 }
 
